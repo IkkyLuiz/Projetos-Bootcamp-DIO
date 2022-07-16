@@ -1,24 +1,72 @@
-let button = document.getElementById('button'); 
-let input1 = document.getElementById('input1') as HTMLInputElement;
-let input2 = document.getElementById('input2') as HTMLInputElement; 
+const pessoa = {
+    nome: 'Jéssica',
+    idade: 23,
+    profissao: 'secretária'
+}
 
-function adicionarNumeros(numero1: number, numero2: number, devePrintar: boolean, frase: string) {
-    let resultado = numero1 + numero2
-    if (devePrintar) {
-        console.log(frase + resultado)
+pessoa.idade = 25;
+
+const rafael:{nome: string, idade: number, profissao: string} = {
+nome: 'Rafael',
+idade: 27,
+profissao: 'Administrador'
+}
+
+pessoa.idade = 25;
+
+const jonas:{nome: string, idade: number, profissao: string} = {
+nome: 'Jonas',
+idade: 27,
+profissao: 'administrador'
+}
+
+enum Profissao {
+    Administrador,
+    Secretária,
+    Médico,
+    Professora
+}
+
+
+interface Pessoa {
+    nome: string,
+    idade: number,
+    profissao?: Profissao
+}
+
+interface Estudante extends Pessoa {
+    materias: string[]
+}
+
+const sthefany: Pessoa = {
+    nome: 'Sthefany',
+    idade: 26,
+    profissao: Profissao.Secretária
+}
+
+const isac: Pessoa = {
+    nome: 'Isac',
+    idade: 26,
+    profissao: Profissao.Médico
+}
+
+const barbara: Estudante = {
+    nome: 'Barbara',
+    idade: 18,
+    profissao: Profissao.Secretária,
+    materias: ['Matématica Financeira', 'Gestão Empresarial', 'Português Instrumental' ]
+}
+
+const isabela: Estudante = {
+    nome: 'Isabela',
+    idade: 18,
+    materias: ['Matématica Financeira', 'Gestão Empresarial', 'Português Instrumental' ]
+}
+
+function listar(lista: string[]) {
+    for (const item of lista) {
+        console.log('-', item);
     }
-    return numero1 + numero2
 }
 
-let devePrintar = true;
-let frase = 'O valor é:';
-
-
-if (button) {
-    button.addEventListener('click', () => {   
-        if (input1 && input2){
-            console.log(adicionarNumeros(Number(input1.value), Number(input2.value),devePrintar, frase));
-        }
-        
-    })
-}
+listar(isabela.materias);
